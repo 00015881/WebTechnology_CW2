@@ -18,55 +18,36 @@
   
   </div>
 
-  <!-- Categories Start -->
+
+    <!-- Categories Start -->
+
+  <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
 
 
-<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
-        <a href="#" class="col text-center category__link">
-          <div class="category__img shadow">
-            <img src="https://fito-center.ru/uploads/posts/2020-04/1586924574_2019042715465681556351216.jpg" alt="American Food" loading="lazy">
-          </div>
-          <div class="pt-1">American Food</div>
-        </a>
+    <% console.log(categories); %>
 
-        <a href="#" class="col text-center category__link">
-            <div class="category__img shadow">
-              <img src="https://fito-center.ru/uploads/posts/2020-04/1586924574_2019042715465681556351216.jpg" alt="American Food" loading="lazy">
-            </div>
-            <div class="pt-1">American Food</div>
-          </a>
-
-          <a href="#" class="col text-center category__link">
-            <div class="category__img shadow">
-              <img src="https://fito-center.ru/uploads/posts/2020-04/1586924574_2019042715465681556351216.jpg" alt="American Food" loading="lazy">
-            </div>
-            <div class="pt-1">American Food</div>
-          </a>
-
-          <a href="#" class="col text-center category__link">
-            <div class="category__img shadow">
-              <img src="https://fito-center.ru/uploads/posts/2020-04/1586924574_2019042715465681556351216.jpg" alt="American Food" loading="lazy">
-            </div>
-            <div class="pt-1">American Food</div>
-          </a>
-
-          <a href="#" class="col text-center category__link">
-            <div class="category__img shadow">
-              <img src="https://fito-center.ru/uploads/posts/2020-04/1586924574_2019042715465681556351216.jpg" alt="American Food" loading="lazy">
-            </div>
-            <div class="pt-1">American Food</div>
-          </a>
-
-          <a href="/categories" class="col text-center category__link">
-            <div class="category__img shadow">
-              <img src="https://scontent.ftas9-1.fna.fbcdn.net/v/t39.30808-6/327355314_5880829205332539_312220277205093085_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=C24YP9mmJdMAX9810TI&_nc_ht=scontent.ftas9-1.fna&oh=00_AfCqtNBZ4-Qbhr7QaeiWdBcpBsIvuJ1hG2zHcADyGOU8Nw&oe=65F55A66" alt="Other Categories" loading="lazy">
-            </div>
-            <div class="pt-1"> Other Categories </div>
-          </a>
+  <% if(categories && categories.length > 0) { %>
+    <% categories.forEach(function(category, index) { %>
+      <a href="#" class="col text-center category__link">
+        <div class="category__img shadow">
+          <img src="<%- category.image %>" alt="<%- category.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%- category.name %></div>
+      </a>
+    <% }) %>
+  <% } %>
+  
+    <a href="/categories" class="col text-center category__link">
+      <div class="category__img shadow">
+        <img src="https://u7.uidownload.com/vector/968/709/vector-flat-web-icon-with-long-shadow-eco-cutlery-vector-eps-ai.jpg" alt="View All Categories" loading="lazy">
+      </div>
+      <div class="pt-1">View All</div>
+    </a>
   
   </div>
   <!-- Categories End -->
-  
+
+
 <!-- Latest Recipes -->
 <section class="pb-4 pt-4">
     <div class="d-flex mb-2 align-items-center">
