@@ -107,6 +107,80 @@ exports.exploreRandom = async(req, res) => {
   } 
   
   
+  /**
+  * submit-recipe
+ */
+  exports.submitRecipe = async(req, res) => {
+    const infoErrorsObj = req.flash('infoErrors');
+    const infoSubmitObj = req.flash('infoSubmit');
+    res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
+  }
+
+
+/**
+ * POST /submit-recipe
+ * Submit Recipe
+*/
+exports.submitRecipeOnPost = async(req, res) => {
+    try {
+  
+      let imageUploadFile;
+      let uploadPath;
+      let newImageName;
+  
+      if(!req.files || Object.keys(req.files).length === 0){
+        console.log('No Files where uploaded.');
+      } else {
+  
+        imageUploadFile = req.files.image;
+        newImageName = Date.now() + imageUploadFile.name;
+  
+        uploadPath = require('path').resolve('./') + '/public/images/' + newImageName;
+  
+        imageUploadFile.mv(uploadPath, function(err){
+          if(err) return res.status(500).send(err);
+        })
+  
+      }
+  
+      const newRecipe = new Recipe({
+        name: req.body.name,
+        description: req.body.description,
+        email: req.body.email,
+        ingredients: req.body.ingredients,
+        category: req.body.category,
+        image: newImageName
+      });
+      
+      await newRecipe.save();
+      
+      req.flash('infoSubmit', 'Recipe has been added.')
+      res.redirect('/submit-recipe');
+    } catch (error) {
+        // res.json(error);
+        req.flash('infoErrors', error);
+        res.redirect('/submit-recipe');
+    }
+}
+
+
+/**
+ * Get / recipe/ id
+ * recipe
+ */
+exports.exploreRecipe = async(req, res) => {
+    try {
+      let recipeId = req.params.id;
+      const recipe = await Recipe.findById(recipeId);
+      res.render('recipe', { title: 'Cooking Blog - Recipe', recipe } );
+    } catch (error) {
+      res.satus(500).send({message: error.message || "Error Occured" });
+    }
+  } 
+
+
+
+
 // async function insertDummyRecipeData() {
 //   try {
 //     await Recipe.insertMany([
@@ -213,19 +287,6 @@ exports.exploreRandom = async(req, res) => {
 
 
 
-/**
- * Get / recipe/ id
- * recipe
- */
-exports.exploreRecipe = async(req, res) => {
-    try {
-      let recipeId = req.params.id;
-      const recipe = await Recipe.findById(recipeId);
-      res.render('recipe', { title: 'Cooking Blog - Recipe', recipe } );
-    } catch (error) {
-      res.satus(500).send({message: error.message || "Error Occured" });
-    }
-  } 
 
 
 
