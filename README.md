@@ -22,6 +22,6 @@ Server directory- server/: Holds server-side logic and functionality. controller
 Views directory- contains EJS templates and is used to render HTML content. EJS templates for rendering HTML content are organized within the views directory. views/: Contains EJS templates used to render HTML content. layout/: Contains the main layout template (main.ejs) used by other EJS files. Individual EJS files represent different views/pages of the application, such as homepage (index.ejs), category listing (categories.ejs), recipe details (recipe.ejs), etc.
 
 
-Github repository link:
+Github repository link: https://github.com/00015881/WebTechnology_CW2.git
 Hosted application link: 
 
