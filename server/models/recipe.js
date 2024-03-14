@@ -32,4 +32,4 @@ const recipeSchema = new mongoose.Schema({
     // WildCard Indexing
     //recipeSchema.index({ "$**" : 'text' });
     
-    module.exports = mongoose.model('recipe', recipeSchema);
+    module.exports = mongoose.model('Recipe', recipeSchema);
