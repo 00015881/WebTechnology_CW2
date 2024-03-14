@@ -179,7 +179,7 @@ exports.exploreRecipe = async(req, res) => {
   } 
 
 
-  // Delete Recipe
+  // Delete recipe
 async function deleteRecipe(){
   try {
     await Recipe.deleteOne({ name: 'New Recipe From Form' });
@@ -190,7 +190,7 @@ async function deleteRecipe(){
 deleteRecipe();
 
 
-// Update Recipe
+// Update recipe
 async function updateRecipe(){
   try {
     const res = await Recipe.updateOne({ name: 'New Recipe' }, { name: 'New Recipe Updated' });
