@@ -23,5 +23,5 @@ Views directory- contains EJS templates and is used to render HTML content. EJS 
 
 
 Github repository link: https://github.com/00015881/WebTechnology_CW2.git
-Hosted application link: 
+Hosted application link: https://webtechnology-cw2-5.onrender.com/
 
